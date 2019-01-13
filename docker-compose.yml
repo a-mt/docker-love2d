@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  love2d:
+    build: ./etc/docker
+    image: love2d
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./project:/home/project
+      - ./etc/ZeroBraneStudio/user.lua:/usr/sbin/ZeroBraneStudio/cfg/user.lua
+    environment:
+      - DISPLAY=$DISPLAY
+
+
+#sudo docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v project:/home/project -v etc/ZeroBraneStudio/user.lua:/usr/sbin/ZeroBraneStudio/cfg/user.lua --privileged love2d /bin/bash
